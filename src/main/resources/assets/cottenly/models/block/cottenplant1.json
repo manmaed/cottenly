@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "cottenly:blocks/cotten_stage_1"
+  }
+}
