@@ -12,17 +12,17 @@ import net.minecraftforge.registries.ObjectHolder;
  */
 public class CItems {
 
-    @ObjectHolder(RefHelper.Register + "cotten")
-    public static Item cottenseed;
+    @ObjectHolder(RefHelper.Register + "cotten_seeds")
+    public static Item cotten_seed;
 
     @ObjectHolder(RefHelper.Register + "ball")
     public static Item ball;
 
     public static void load() {
-        cottenseed = new BlockNamedItem(CBlocks.cottenplant, (new Item.Properties().group(Cottenly.itemGroup))).setRegistryName("cotten_seeds");
+        cotten_seed = new BlockNamedItem(CBlocks.cotten_plant, (new Item.Properties().group(Cottenly.itemGroup))).setRegistryName("cotten_seeds");
         ball = new Item(new Item.Properties().group(Cottenly.itemGroup)).setRegistryName("ball");
 
-        Cottenly.getRegisteryHandler().registerItem(cottenseed);
+        Cottenly.getRegisteryHandler().registerItem(cotten_seed);
         Cottenly.getRegisteryHandler().registerItem(ball);
     }
 

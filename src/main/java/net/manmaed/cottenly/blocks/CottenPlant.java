@@ -17,7 +17,7 @@ public class CottenPlant extends CropsBlock {
 
     @Override
     protected IItemProvider getSeedsItem() {
-        return CItems.cottenseed;
+        return CItems.cotten_seed;
     }
 
     @Override

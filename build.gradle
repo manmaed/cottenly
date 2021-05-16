@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        maven { url = 'https://forge.modpacks.ch/maven' }
         maven { url = 'https://files.minecraftforge.net/maven' }
 		jcenter()
         mavenCentral()
@@ -17,6 +18,11 @@ apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
+    }
+}
 
 // Jenkins Stuff
 def ENV = System.getenv()
@@ -114,6 +120,7 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
+    compile fg.deobf("curse.maven:TOP-245211:3157997")
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"

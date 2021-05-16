@@ -31,6 +31,7 @@ public class Cottenly {
 
     public Cottenly() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(CottenlyClient::doClientStuff);
         registeryHandler = new RegisterHandler();
     }
 

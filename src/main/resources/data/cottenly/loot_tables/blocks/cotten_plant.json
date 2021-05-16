@@ -12,18 +12,18 @@
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "cottenley:cottenplant",
+                  "block": "cottenly:cotten_plant",
                   "properties": {
                     "age": "7"
                   }
                 }
               ],
-              "name": "cottenley:ball",
-              "amount": "2"
+              "name": "cottenly:ball",
+              "amount": 2
             },
             {
               "type": "minecraft:item",
-              "name": "cottenley:cotten_seeds"
+              "name": "cottenly:cotten_seeds"
             }
           ]
         }
@@ -45,13 +45,13 @@
               }
             }
           ],
-          "name": "minecraft:cotten_seeds"
+          "name": "cottenly:cotten_seeds"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "cottenley:cottenplant",
+          "block": "cottenly:cotten_plant",
           "properties": {
             "age": "7"
           }

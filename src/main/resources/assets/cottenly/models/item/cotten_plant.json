@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "minecraft:item/wheat_seeds"
+    "layer0": "cottenly:items/cotten_seeds"
   }
 }
