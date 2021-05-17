@@ -19,7 +19,7 @@
                 }
               ],
               "name": "cottenly:ball",
-              "amount": 2
+              "count": 2
             },
             {
               "type": "minecraft:item",

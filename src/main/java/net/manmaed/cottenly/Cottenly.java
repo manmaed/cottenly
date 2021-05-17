@@ -6,6 +6,7 @@ import net.manmaed.cottenly.libs.RegisterHandler;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -40,7 +41,6 @@ public class Cottenly {
     }
 
     private void init(FMLCommonSetupEvent event) {
-        LogHelper.info("i was HERE");
     }
 
 }
