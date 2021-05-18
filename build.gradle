@@ -27,8 +27,8 @@ repositories {
 // Jenkins Stuff
 def ENV = System.getenv()
 version = ENV.BUILD_NUMBER ? "${mod_version}.${ENV.BUILD_NUMBER}" : "${mod_version}.custom"
-group = 'net.manmaed.cottenly' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'cottenly'
+group = 'net.manmaed.cottonly' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'cottonly'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
