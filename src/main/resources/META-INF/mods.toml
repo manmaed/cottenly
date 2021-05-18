@@ -1,12 +1,12 @@
 modLoader="javafml" #mandatory
 loaderVersion="[36,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 license="All rights reserved"
-issueTrackerURL="https://github.com/manmaed/cottenly/issues" #optional
+issueTrackerURL="https://github.com/manmaed/cottonly/issues" #optional
 [[mods]] #mandatory
-modId="cottenly" #mandatory
+modId="cottonly" #mandatory
 version="${version}" #mandatory
-displayName="Cottenly" #mandatory
+displayName="Cottonly" #mandatory
 authors="manmaed" #optional
 description='''
-Cotten
+Cotton Plant
 '''
