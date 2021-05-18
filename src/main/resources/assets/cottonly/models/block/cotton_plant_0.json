@@ -1,0 +1,6 @@
+{
+  "parent": "block/crop",
+  "textures": {
+    "crop": "cottonly:blocks/cotton_stage_0"
+  }
+}
