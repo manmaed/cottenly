@@ -1,5 +1,9 @@
 {
   "itemGroup.cottonly": "Cottonly",
   "item.cottonly.ball": "Cotton Ball",
-  "item.cottonly.cotton_seeds": "Cotton Seeds"
+  "item.cottonly.cotton_seeds": "Cotton Seeds",
+  "item.cottonly.cotton_hat": "Cotton Hat",
+  "item.cottonly.cotton_shirt": "Cotton Shirt",
+  "item.cottonly.cotton_trousers": "Cotton Trousers",
+  "item.cottonly.cotton_socks": "Cotton Socks"
 }
