@@ -12,7 +12,7 @@
   "categories": [
     "dirt"
   ],
-  "growthTicks": 100,
+  "growthTicks": 1000,
   "display": {
     "block": "cottonly:cotton_plant",
     "properties": {
