@@ -4,9 +4,7 @@ import net.manmaed.cottonly.Cottonly;
 import net.manmaed.cottonly.blocks.CBlocks;
 import net.manmaed.cottonly.libs.RefHelper;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockNamedItem;
-import net.minecraft.item.DyeableArmorItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -37,10 +35,10 @@ public class CItems {
     public static void load() {
         cotton_seed = new BlockNamedItem(CBlocks.cotton_plant, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_seeds");
         ball = new Item(new Item.Properties().group(Cottonly.itemGroup)).setRegistryName("ball");
-        hat = new ArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.HEAD, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_hat");
-        shirt = new ArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.CHEST, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_shirt");
-        trousers = new ArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.LEGS, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_trousers");
-        socks = new ArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.FEET, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_socks");
+        hat = new CDyeableArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.HEAD, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_hat");
+        shirt = new CDyeableArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.CHEST, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_shirt");
+        trousers = new CDyeableArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.LEGS, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_trousers");
+        socks = new CDyeableArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.FEET, (new Item.Properties().group(Cottonly.itemGroup))).setRegistryName("cotton_socks");
 
         Cottonly.getRegisteryHandler().registerItem(cotton_seed);
         Cottonly.getRegisteryHandler().registerItem(ball);
