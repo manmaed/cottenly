@@ -2,10 +2,13 @@ package net.manmaed.cottonly.libs;
 
 import net.manmaed.cottonly.Cottonly;
 import net.manmaed.cottonly.blocks.CBlocks;
+import net.manmaed.cottonly.config.CottonConfig;
 import net.manmaed.cottonly.items.CItems;
+import net.manmaed.cottonly.loot.GrassSeedModifier;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +36,13 @@ public class RegistryEvents {
         }
         for (Item item : Cottonly.getRegisteryHandler().getRegisteredItems()) {
             event.getRegistry().register(item);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onGlobalLootModifier(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
+        if (!CottonConfig.REMOVE_GRASS_LOOT_TABLE.get()) {
+            event.getRegistry().register(new GrassSeedModifier().setRegistryName(RefHelper.id, "cotton_seed_drops"));
         }
     }
 }
