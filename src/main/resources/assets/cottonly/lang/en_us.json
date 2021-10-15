@@ -1,9 +1,16 @@
 {
+  "lang.file.name": "Engish (US)",
+  "lang.author.name": "manmaed",
   "itemGroup.cottonly": "Cottonly",
+
+  "cottonly.coment.1": "Items",
   "item.cottonly.ball": "Cotton Ball",
   "item.cottonly.cotton_seeds": "Cotton Seeds",
   "item.cottonly.cotton_hat": "Cotton Hat",
   "item.cottonly.cotton_shirt": "Cotton Shirt",
   "item.cottonly.cotton_trousers": "Cotton Trousers",
-  "item.cottonly.cotton_socks": "Cotton Socks"
+  "item.cottonly.cotton_socks": "Cotton Socks",
+
+  "cottonly.coment.2": "Blocks",
+  "block.cottonly.cotton_plant": "Cotton Crops"
 }
