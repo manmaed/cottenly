@@ -35,7 +35,7 @@ public class GrassSeedModifier extends GlobalLootModifierSerializer<GrassSeedMod
         @Nonnull
         @Override
         protected List<ItemStack> doApply(List<ItemStack> list, LootContext context) {
-            list.add(new ItemStack(CItems.cotton_seed));
+            list.add(new ItemStack(CItems.COTTEN_SEED.get()));
             return list;
         }
     }

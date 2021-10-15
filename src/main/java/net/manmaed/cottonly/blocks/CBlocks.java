@@ -1,26 +1,21 @@
 package net.manmaed.cottonly.blocks;
 
-import net.manmaed.cottonly.Cottonly;
 import net.manmaed.cottonly.libs.RefHelper;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 /**
  * Created by manmaed on 16/05/2021.
  */
 public class CBlocks {
 
-    @ObjectHolder(RefHelper.Register + "cotton_plant")
-    public static Block cotton_plant;
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RefHelper.MOD_ID);
 
-    public static void load() {
-        cotton_plant = new CottonPlant(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.CROP)).setRegistryName("cotton_plant");
-
-
-        Cottonly.getRegisteryHandler().registerBlock(cotton_plant);
-    }
+    public static final RegistryObject<Block> COTTEN_PLANT = BLOCKS.register("cotton_plant", () -> new CottonPlant(AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.CROP)));
 
 }
