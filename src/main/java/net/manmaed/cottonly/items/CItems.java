@@ -17,7 +17,7 @@ public class CItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RefHelper.MOD_ID);
 
-    public static final RegistryObject<Item> COTTEN_SEED = ITEMS.register("cotton_seeds", () -> new BlockNamedItem(CBlocks.COTTEN_PLANT.get(), (new Item.Properties().group(Cottonly.itemGroup))));
+    public static final RegistryObject<Item> COTTEN_SEED = ITEMS.register("cotton_seeds", () -> new BlockNamedItem(CBlocks.COTTON_PLANT.get(), (new Item.Properties().group(Cottonly.itemGroup))));
     public static final RegistryObject<Item> COTTEN_BALL = ITEMS.register("ball", () -> new Item(new Item.Properties().group(Cottonly.itemGroup)));
     public static final RegistryObject<Item> COTTEN_HAT = ITEMS.register("cotton_hat", () -> new CDyeableArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.HEAD, (new Item.Properties().group(Cottonly.itemGroup))));
     public static final RegistryObject<Item> COTTEN_SHIRT = ITEMS.register("cotton_shirt", () -> new CDyeableArmorItem(ArmorMaterialCotton.COTTON, EquipmentSlotType.CHEST, (new Item.Properties().group(Cottonly.itemGroup))));
