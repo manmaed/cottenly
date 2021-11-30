@@ -3,12 +3,11 @@ package net.manmaed.cottonly;
 import net.manmaed.cottonly.blocks.CBlocks;
 import net.manmaed.cottonly.config.CottonConfig;
 import net.manmaed.cottonly.items.CItems;
-import net.manmaed.cottonly.libs.RefHelper;
-import net.minecraft.block.ComposterBlock;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.IItemProvider;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -20,16 +19,17 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
  * Created by manmaed on 16/05/2021.
  */
 
-@Mod(RefHelper.MOD_ID)
+@Mod(Cottonly.MOD_ID)
 public class Cottonly {
+    public static final String MOD_ID = "cottonly";
     /*
      * TODOs:
      *
      */
 
-    public static final ItemGroup itemGroup = new ItemGroup(RefHelper.MOD_ID) {
+    public static final CreativeModeTab itemGroup = new CreativeModeTab(MOD_ID) {
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(Items.WITHER_ROSE);
         }
     };
@@ -51,8 +51,8 @@ public class Cottonly {
         registerCompostable(0.65F, CItems.COTTEN_SEED.get());
     }
 
-    private static void registerCompostable(float chance, IItemProvider itemIn) {
-        ComposterBlock.CHANCES.put(itemIn.asItem(), chance);
+    private static void registerCompostable(float chance, Item itemIn) {
+        ComposterBlock.COMPOSTABLES.put(itemIn, chance);
     }
 
 }

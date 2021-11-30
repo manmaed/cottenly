@@ -9,9 +9,10 @@ import org.apache.logging.log4j.Logger;
  */
 public class LogHelper {
     private static final Logger LOGGER = LogManager.getLogger();
+    public static final String LOG = ":[Cottonly]:";
 
     private static void log(Level loglvl, Object object) {
-        LOGGER.log(loglvl, "[" + loglvl + "]:" + "-" + RefHelper.LOG + " " + String.valueOf(object));
+        LOGGER.log(loglvl, "[" + loglvl + "]:" + "-" + LOG + " " + String.valueOf(object));
     }
 
     public static void info(Object object) {

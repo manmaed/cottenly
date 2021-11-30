@@ -1,68 +1,64 @@
 package net.manmaed.cottonly.items;
 
-import net.manmaed.cottonly.libs.RefHelper;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Supplier;
 
 /**
- * Complete copy paste from {@link net.minecraft.item.ArmorMaterial}
+ * Complete copy paste from {@link net.minecraft.world.item.ArmorMaterials}
  */
-public enum ArmorMaterialCotton implements IArmorMaterial {
-    COTTON("cotton_armor_material", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
-        return Ingredient.fromItems(CItems.COTTEN_BALL.get());
+public enum ArmorMaterialCotton implements ArmorMaterial {
+    COTTON("cotton_armor_material", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
+        return Ingredient.of(CItems.COTTEN_BALL.get());
     });
 
-    private static final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};
+    private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;
-    private final int maxDamageFactor;
-    private final int[] damageReductionAmountArray;
-    private final int enchantability;
-    private final SoundEvent soundEvent;
+    private final int durabilityMultiplier;
+    private final int[] slotProtections;
+    private final int enchantmentValue;
+    private final SoundEvent sound;
     private final float toughness;
     private final float knockbackResistance;
-    private final LazyValue<Ingredient> repairMaterial;
+    private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    private ArmorMaterialCotton(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
-        //thanks mikey for the fix for this
-        this.name = String.format("%s:%s", RefHelper.MOD_ID, name);
-        this.maxDamageFactor = maxDamageFactor;
-        this.damageReductionAmountArray = damageReductionAmountArray;
-        this.enchantability = enchantability;
-        this.soundEvent = soundEvent;
+    private ArmorMaterialCotton(String name, int durabilityMultiplier, int[] slotProtections, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
+        this.name = name;
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.slotProtections = slotProtections;
+        this.enchantmentValue = enchantmentValue;
+        this.sound = sound;
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
-        this.repairMaterial = new LazyValue<>(repairMaterial);
+        this.repairIngredient = new LazyLoadedValue<>(repairMaterial);
     }
 
-    public int getDurability(EquipmentSlotType slotIn) {
-        return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
+    public int getDurabilityForSlot(EquipmentSlot equipmentSlot) {
+        return HEALTH_PER_SLOT[equipmentSlot.getIndex()] * this.durabilityMultiplier;
     }
 
-    public int getDamageReductionAmount(EquipmentSlotType slotIn) {
-        return this.damageReductionAmountArray[slotIn.getIndex()];
+    public int getDefenseForSlot(EquipmentSlot equipmentSlot) {
+        return this.slotProtections[equipmentSlot.getIndex()];
     }
 
-    public int getEnchantability() {
-        return this.enchantability;
+    public int getEnchantmentValue() {
+        return this.enchantmentValue;
     }
 
-    public SoundEvent getSoundEvent() {
-        return this.soundEvent;
+    public SoundEvent getEquipSound() {
+        return this.sound;
     }
 
-    public Ingredient getRepairMaterial() {
-        return this.repairMaterial.getValue();
+    public Ingredient getRepairIngredient() {
+        return this.repairIngredient.get();
     }
 
-    @OnlyIn(Dist.CLIENT)
     public String getName() {
         return this.name;
     }
@@ -71,9 +67,6 @@ public enum ArmorMaterialCotton implements IArmorMaterial {
         return this.toughness;
     }
 
-    /**
-     * Gets the percentage of knockback resistance provided by armor of the material.
-     */
     public float getKnockbackResistance() {
         return this.knockbackResistance;
     }

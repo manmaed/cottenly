@@ -1,5 +1,6 @@
 package net.manmaed.cottonly.libs;
 
+import net.manmaed.cottonly.Cottonly;
 import net.manmaed.cottonly.config.CottonConfig;
 import net.manmaed.cottonly.loot.GrassSeedModifier;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -16,7 +17,7 @@ public class RegistryEvents {
     @SubscribeEvent
     public static void onGlobalLootModifier(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
         if (!CottonConfig.REMOVE_GRASS_LOOT_TABLE.get()) {
-            event.getRegistry().register(new GrassSeedModifier().setRegistryName(RefHelper.MOD_ID, "cotton_seed_drops"));
+            event.getRegistry().register(new GrassSeedModifier().setRegistryName(Cottonly.MOD_ID, "cotton_seed_drops"));
         }
     }
 }

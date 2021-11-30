@@ -1,8 +1,8 @@
 package net.manmaed.cottonly;
 
 import net.manmaed.cottonly.blocks.CBlocks;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 /**
@@ -11,6 +11,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class CottonlyClient {
 
     public static void doClientStuff(final FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(CBlocks.COTTON_PLANT.get(), renderType -> renderType == RenderType.getCutout() || renderType == RenderType.getTranslucent());
+        ItemBlockRenderTypes.setRenderLayer(CBlocks.COTTON_PLANT.get(), RenderType.cutout());
     }
 }

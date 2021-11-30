@@ -2,14 +2,14 @@ package net.manmaed.cottonly.loot;
 
 import com.google.gson.JsonObject;
 import net.manmaed.cottonly.items.CItems;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.conditions.ILootCondition;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.common.loot.LootModifier;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
@@ -18,8 +18,8 @@ import java.util.List;
 public class GrassSeedModifier extends GlobalLootModifierSerializer<GrassSeedModifier.GrassDropModifier> {
 
     @Override
-    public GrassDropModifier read(ResourceLocation resourceLocation, JsonObject jsonObject, ILootCondition[] lootcondition) {
-        return new GrassDropModifier(lootcondition);
+    public GrassDropModifier read(ResourceLocation resourceLocation, JsonObject jsonObject, LootItemCondition[] ailootcondition) {
+        return new GrassDropModifier(ailootcondition);
     }
 
     @Override
@@ -28,15 +28,15 @@ public class GrassSeedModifier extends GlobalLootModifierSerializer<GrassSeedMod
     }
 
     static class GrassDropModifier extends LootModifier {
-        protected GrassDropModifier(ILootCondition[] lootConditions) {
+        protected GrassDropModifier(LootItemCondition[] lootConditions) {
             super(lootConditions);
         }
 
-        @Nonnull
+        @NotNull
         @Override
-        protected List<ItemStack> doApply(List<ItemStack> list, LootContext context) {
-            list.add(new ItemStack(CItems.COTTEN_SEED.get()));
-            return list;
+        protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+            generatedLoot.add(new ItemStack(CItems.COTTEN_SEED.get()));
+            return generatedLoot;
         }
     }
 }
