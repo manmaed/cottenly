@@ -3,7 +3,7 @@ name: Build & Release
 on:
   create:
     tags:
-      - *
+      - v*
 
 jobs:
   build:
