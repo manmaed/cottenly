@@ -20,6 +20,7 @@ build
 # other
 eclipse
 run
+cottonly-main
 
 # Files from Forge MDK
 forge*changelog.txt
