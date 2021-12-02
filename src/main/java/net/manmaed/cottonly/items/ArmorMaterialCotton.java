@@ -15,7 +15,7 @@ import java.util.function.Supplier;
  */
 public enum ArmorMaterialCotton implements ArmorMaterial {
     COTTON("cotton_armor_material", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
-        return Ingredient.of(CItems.COTTEN_BALL.get());
+        return Ingredient.of(CItems.COTTON_BALL.get());
     });
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
@@ -28,7 +28,7 @@ public enum ArmorMaterialCotton implements ArmorMaterial {
     private final float knockbackResistance;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    private ArmorMaterialCotton(String name, int durabilityMultiplier, int[] slotProtections, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
+    ArmorMaterialCotton(String name, int durabilityMultiplier, int[] slotProtections, int enchantmentValue, SoundEvent sound, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.slotProtections = slotProtections;
@@ -70,4 +70,5 @@ public enum ArmorMaterialCotton implements ArmorMaterial {
     public float getKnockbackResistance() {
         return this.knockbackResistance;
     }
+
 }

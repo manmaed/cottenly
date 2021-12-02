@@ -12,7 +12,7 @@ public class LogHelper {
     public static final String LOG = ":[Cottonly]:";
 
     private static void log(Level loglvl, Object object) {
-        LOGGER.log(loglvl, "[" + loglvl + "]:" + "-" + LOG + " " + String.valueOf(object));
+        LOGGER.log(loglvl, "[" + loglvl + "]:" + "-" + LOG + " " + object);
     }
 
     public static void info(Object object) {

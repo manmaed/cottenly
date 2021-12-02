@@ -23,9 +23,9 @@ repositories {
     }
 }
 
-// Jenkins Stuff
+// Github Stuff
 def ENV = System.getenv()
-version = ENV.BUILD_NUMBER ? "${mod_version}.${ENV.BUILD_NUMBER}" : "${mod_version}.custom"
+version = "${ENV.GITHUB_RUN_NUMBER}" ? "${mod_version}.${ENV.GITHUB_RUN_NUMBER}" : "${mod_version}.nobuildnumber"
 group = 'net.manmaed.cottonly' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cottonly'
 

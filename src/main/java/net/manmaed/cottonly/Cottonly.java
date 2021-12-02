@@ -48,7 +48,7 @@ public class Cottonly {
 
 
     private void init(FMLCommonSetupEvent event) {
-        registerCompostable(0.65F, CItems.COTTEN_SEED.get());
+        registerCompostable(0.65F, CItems.COTTON_SEED.get());
     }
 
     private static void registerCompostable(float chance, Item itemIn) {
