@@ -3,6 +3,7 @@ package net.manmaed.cottonly;
 import net.manmaed.cottonly.blocks.CBlocks;
 import net.manmaed.cottonly.config.CottonConfig;
 import net.manmaed.cottonly.items.CItems;
+import net.manmaed.cottonly.loot.CLoots;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -38,12 +39,14 @@ public class Cottonly {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         CItems.ITEMS.register(eventBus);
         CBlocks.BLOCKS.register(eventBus);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(CottonlyClient::doClientStuff);
+        eventBus.addListener(this::init);
+        eventBus.addListener(CottonlyClient::doClientStuff);
+        if(!CottonConfig.REMOVE_GRASS_LOOT_TABLE.get()) {
+            CLoots.LOOT_MODIFIERS.register(eventBus);
+        }
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CottonConfig.COMMON_CONFIG);
         /*ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CottonConfig.CLIENT_CONFIG);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CottonConfig.SERVER_CONFIG);*/
-        /*MinecraftForge.EVENT_BUS.addListener(LootHandler::loadLoot);*/
     }
 
 

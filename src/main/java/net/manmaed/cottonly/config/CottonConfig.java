@@ -27,6 +27,6 @@ public class CottonConfig {
     }
 
     private static void doLootTableMagic() {
-        REMOVE_GRASS_LOOT_TABLE = COMMON_BUILDER.comment("Remove Cotton seeds from the grass loot table? [DEFAULT:false]").define("remove_cotton_seeds_loot_table", false);
+        REMOVE_GRASS_LOOT_TABLE = COMMON_BUILDER.comment("Remove Cotton seeds from the grass & fern loot table? [DEFAULT:false]").define("remove_cotton_seeds_loot_table", false);
     }
 }

@@ -1,0 +1,20 @@
+{
+  "type": "cottonly:cotton_seed_drops",
+  "item": "cottonly:cotton_seed",
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.1
+    },
+    {
+      "condition": "minecraft:inverted",
+      "loot_table_id": "minecraft:blocks/large_fern",
+      "term": {
+        "condition": "minecraft:match_tool",
+        "predicate": {
+          "item": "minecraft:shears"
+        }
+      }
+    }
+  ]
+}

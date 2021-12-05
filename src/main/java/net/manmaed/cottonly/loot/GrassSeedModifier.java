@@ -15,7 +15,38 @@ import java.util.List;
 /**
  * Created by manmaed on 15/08/2021.
  */
-public class GrassSeedModifier extends GlobalLootModifierSerializer<GrassSeedModifier.GrassDropModifier> {
+public class GrassSeedModifier extends LootModifier {
+
+
+    protected GrassSeedModifier(LootItemCondition[] conditionsIn) {
+        super(conditionsIn);
+    }
+
+    @NotNull
+    @Override
+    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+        generatedLoot.add(new ItemStack(CItems.COTTON_SEED.get()));
+        return generatedLoot;
+    }
+
+    public static class Serializer extends GlobalLootModifierSerializer<GrassSeedModifier> {
+
+        @Override
+        public GrassSeedModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] ailootcondition) {
+            return new GrassSeedModifier(ailootcondition);
+        }
+
+        @Override
+        public JsonObject write(GrassSeedModifier instance) {
+            JsonObject jsonObject = makeConditions(instance.conditions);
+            jsonObject.addProperty("item", CItems.COTTON_SEED.get().getRegistryName().toString());
+            return jsonObject;
+        }
+    }
+}
+
+//Old Code
+/*public class GrassSeedModifier extends GlobalLootModifierSerializer<GrassSeedModifier.GrassDropModifier> {
 
     @Override
     public GrassDropModifier read(ResourceLocation resourceLocation, JsonObject jsonObject, LootItemCondition[] ailootcondition) {
@@ -30,13 +61,15 @@ public class GrassSeedModifier extends GlobalLootModifierSerializer<GrassSeedMod
     static class GrassDropModifier extends LootModifier {
         protected GrassDropModifier(LootItemCondition[] lootConditions) {
             super(lootConditions);
+
         }
 
         @NotNull
         @Override
         protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
             generatedLoot.add(new ItemStack(CItems.COTTON_SEED.get()));
+            LogHelper.info(generatedLoot);
             return generatedLoot;
         }
     }
-}
+}*/

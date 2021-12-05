@@ -1,5 +1,6 @@
 {
   "type": "cottonly:cotton_seed_drops",
+  "item": "cottonly:cotton_seed",
   "conditions": [
     {
       "condition": "minecraft:random_chance",
@@ -7,7 +8,7 @@
     },
     {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "minecraft:blocks/grass"
+      "loot_table_id": "minecraft:blocks/fern"
     }
   ]
 }
