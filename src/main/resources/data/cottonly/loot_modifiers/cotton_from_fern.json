@@ -1,6 +1,5 @@
 {
   "type": "cottonly:cotton_seed_drops",
-  "item": "cottonly:cotton_seed",
   "conditions": [
     {
       "condition": "minecraft:random_chance",
