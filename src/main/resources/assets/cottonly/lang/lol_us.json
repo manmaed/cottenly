@@ -2,7 +2,6 @@
   "lang.file.name": "LOLCAT",
   "lang.author.name": "manmaed",
   "itemGroup.cottonly": "Cottonly",
-
   "cottonly.coment.1": "Items",
   "item.cottonly.ball": "Boll of fluffz ",
   "item.cottonly.cotton_seeds": "Cottnz Sedz",
@@ -10,7 +9,6 @@
   "item.cottonly.cotton_shirt": "Cottnz Jackett",
   "item.cottonly.cotton_trousers": "Cottnz Pantz",
   "item.cottonly.cotton_socks": "Cottnz Butz",
-
   "cottonly.coment.2": "Blocks",
   "block.cottonly.cotton_plant": "Cottnz Cropz"
 }

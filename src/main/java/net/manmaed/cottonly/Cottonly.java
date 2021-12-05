@@ -41,7 +41,7 @@ public class Cottonly {
         CBlocks.BLOCKS.register(eventBus);
         eventBus.addListener(this::init);
         eventBus.addListener(CottonlyClient::doClientStuff);
-        if(!CottonConfig.REMOVE_GRASS_LOOT_TABLE.get()) {
+        if (!CottonConfig.REMOVE_GRASS_LOOT_TABLE.get()) {
             CLoots.LOOT_MODIFIERS.register(eventBus);
         }
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CottonConfig.COMMON_CONFIG);
