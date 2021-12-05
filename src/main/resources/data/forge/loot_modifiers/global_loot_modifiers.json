@@ -2,6 +2,8 @@
   "replace": false,
   "entries": [
     "cottonly:cotton_from_grass",
-    "cottonly:cotton_from_tall_grass"
+    "cottonly:cotton_from_tall_grass",
+    "cottonly:cotton_from_fern",
+    "cottonly:cotton_from_large_fern"
   ]
 }
