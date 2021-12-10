@@ -6,10 +6,15 @@
     "1.18": {
       "0.8.3": "First Port to 1.18"
     },
+    "1.18.1": {
+      "0.9.4": "First Port to 1.18.1"
+    },
     "promos": {
       "1.16.5-latest": "0.7.8",
       "1.16.5-recommended": "0.7.8",
       "1.18-latest": "0.8.3",
-      "1.18-recommended": "0.8.3"
+      "1.18-recommended": "0.8.3",
+      "1.18.1-latest": "0.9.4",
+      "1.18.1-recommended": "0.9.4"
     }
 }
