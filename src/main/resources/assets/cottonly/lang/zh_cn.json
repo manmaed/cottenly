@@ -1,0 +1,16 @@
+{
+  "lang.file.name": "Chinese (CHS)",
+  "lang.author.name": "Dev_Enter",
+  "itemGroup.cottonly": "棉花",
+
+  "cottonly.coment.1": "Items",
+  "item.cottonly.ball": "棉花球",
+  "item.cottonly.cotton_seeds": "棉花种子",
+  "item.cottonly.cotton_hat": "棉花头盔",
+  "item.cottonly.cotton_shirt": "棉花胸甲",
+  "item.cottonly.cotton_trousers": "棉花裤子",
+  "item.cottonly.cotton_socks": "棉花袜子",
+
+  "cottonly.coment.2": "Blocks",
+  "block.cottonly.cotton_plant": "棉花作物"
+}
