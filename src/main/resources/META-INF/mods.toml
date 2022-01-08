@@ -7,6 +7,7 @@ modId = "cottonly" #mandatory
 version = "${version}" #mandatory
 displayName = "Cottonly" #mandatory
 authors = "manmaed" #optional
+updateJSONURL = "https://raw.githubusercontent.com/manmaed/cottonly/main/update.json"
 logoFile = "cotton_logo.png"
 description = '''
 Cotton Plant

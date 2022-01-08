@@ -26,7 +26,7 @@ repositories {
 
 // Jenkins Stuff
 def ENV = System.getenv()
-version = ENV.BUILD_NUMBER ? "${mod_version}.${ENV.BUILD_NUMBER}" : "${mod_version}.custom"
+version = '0.7.9'
 group = 'net.manmaed.cottonly' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cottonly'
 
@@ -190,5 +190,18 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         exclude "META-INF/mods.toml"
+    }
+}
+if (ENV.CURSE_DEPLOY) {
+    curseforge {
+        apiKey = ENV.CURSE_DEPLOY
+        project {
+            id = project.curseforge_id
+            releaseType = "beta"
+            addGameVersion "Forge"
+            addGameVersion "1.16.5"
+            mainArtifact(jar)
+            changelog = "changeme"
+        }
     }
 }
