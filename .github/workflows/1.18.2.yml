@@ -1,4 +1,4 @@
-name: Build & Release
+name: Build & Release For Minecraft 1.18.2
 
 on:
   create:
@@ -8,8 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: |
-      !contains(github.event.head_commit.message, '[skip]')
     steps:
       - uses: actions/cache@v2
         with:
@@ -30,4 +28,4 @@ jobs:
           CURSE_DEPLOY: ${{ secrets.CURSE_DEPLOY }}
         run: |
           chmod +x ./gradlew
-          ./gradlew build publish curseforge --stacktrace --no-daemon
+          ./gradlew build curseforge --stacktrace --no-daemon
