@@ -11,12 +11,17 @@
       "0.9.4": "First Port to 1.18.1",
       "0.9.6": "Added Chinese (CHS) by Dev_Enter"
     },
+    "1.18.2": {
+      "0.10.1": "First Port to 1.18.2"
+    },
     "promos": {
       "1.16.5-latest": "0.7.9",
       "1.16.5-recommended": "0.7.9",
       "1.18-latest": "0.8.3",
       "1.18-recommended": "0.8.3",
       "1.18.1-latest": "0.9.6",
-      "1.18.1-recommended": "0.9.6"
+      "1.18.1-recommended": "0.9.6",
+      "1.18.2-latest": "0.10.1",
+      "1.18.2-recommended": "0.10.1"
     }
 }
