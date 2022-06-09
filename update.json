@@ -1,5 +1,8 @@
 {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/cottonly",
+    "1.19": {
+      "0.11.1": "Port to 1.19"
+    },
     "1.18.2": {
       "0.10.3": "Fixes a Forge Change version 40.0.18+",
       "0.10.1": "First Port to 1.18.2"
@@ -16,6 +19,8 @@
       "0.7.9": "Added Chinese (CHS) by Dev_Enter"
     },
     "promos": {
+      "1.19-latest": "0.11.1",
+      "1.19-recommended": "0.11.1",
       "1.18.2-latest": "0.10.3",
       "1.18.2-recommended": "0.10.3",
       "1.18.1-latest": "0.9.6",
