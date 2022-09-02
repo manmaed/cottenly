@@ -11,6 +11,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class CottonlyClient {
 
     public static void doClientStuff(final FMLClientSetupEvent event) {
-        ItemBlockRenderTypes.setRenderLayer(CBlocks.COTTON_PLANT.get(), RenderType.cutout());
+        //ItemBlockRenderTypes.setRenderLayer(CBlocks.COTTON_PLANT.get(), RenderType.cutout());
     }
 }

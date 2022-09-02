@@ -41,9 +41,7 @@ public class Cottonly {
         CItems.ITEMS.register(eventBus);
         CBlocks.BLOCKS.register(eventBus);
         eventBus.addListener(this::init);
-        eventBus.addListener(CottonlyClient::doClientStuff);
         CLoots.LOOT_MODIFIERS.register(eventBus);
-        eventBus.addListener(this::dataGen);
 /*
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CottonConfig.COMMON_CONFIG);
 */
@@ -58,10 +56,6 @@ public class Cottonly {
 
     private static void registerCompostable(float chance, Item itemIn) {
         ComposterBlock.COMPOSTABLES.put(itemIn, chance);
-    }
-
-    public void dataGen(GatherDataEvent event) {
-        event.getGenerator().addProvider(true, new LootModifierGenerator(event.getGenerator()));
     }
 
 }

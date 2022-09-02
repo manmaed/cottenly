@@ -1,5 +1,5 @@
 {
-  "type": "cottonly:cotton_seed_drops",
+  "type": "cottonly:cotton_from_large_fern",
   "conditions": [
     {
       "condition": "minecraft:random_chance",
@@ -9,5 +9,9 @@
       "condition": "forge:loot_table_id",
       "loot_table_id": "minecraft:blocks/large_fern"
     }
-  ]
+  ],
+  "stack": {
+    "Count": 1,
+    "id": "cottonly:cotton_seeds"
+  }
 }

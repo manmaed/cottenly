@@ -4,7 +4,6 @@ package net.manmaed.cottonly.loot;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.manmaed.cottonly.items.CItems;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -15,16 +14,16 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Created by manmaed on 15/08/2021.
  */
-public class GrassSeedModifier extends LootModifier {
+public class GrassSeedModifier3 extends LootModifier {
 
-    public static final Codec<GrassSeedModifier> CODEC = RecordCodecBuilder.create(inst ->
+    public static final Codec<GrassSeedModifier3> CODEC = RecordCodecBuilder.create(inst ->
             codecStart(inst)
-                    .and(ItemStack.CODEC.fieldOf("stack").forGetter(GrassSeedModifier::getStack))
-                    .apply(inst, GrassSeedModifier::new));
+                    .and(ItemStack.CODEC.fieldOf("stack").forGetter(GrassSeedModifier3::getStack))
+                    .apply(inst, GrassSeedModifier3::new));
 
     private final ItemStack stack;
 
-    public GrassSeedModifier(LootItemCondition[] conditionsIn, ItemStack itemStack) {
+    public GrassSeedModifier3(LootItemCondition[] conditionsIn, ItemStack itemStack) {
         super(conditionsIn);
         this.stack = itemStack;
     }

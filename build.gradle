@@ -1,22 +1,9 @@
-buildscript {
-    repositories {
-        maven { url = 'https://forge.modpacks.ch/maven' }
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        mavenCentral()
-
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-    }
-}
 plugins {
+    id 'eclipse'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '5.1.+'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
-
-apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
 repositories {
     maven {
         url "https://www.cursemaven.com"
@@ -36,7 +23,7 @@ minecraft {
     mappings channel: 'official', version: "${minecraft_version}"
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/c')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             mods {
@@ -47,7 +34,7 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/s')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             mods {
@@ -116,4 +103,7 @@ if (ENV.CURSE_DEPLOY) {
             changelog = "changeme"
         }
     }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
