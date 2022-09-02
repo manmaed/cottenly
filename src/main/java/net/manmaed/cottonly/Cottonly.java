@@ -9,6 +9,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -41,10 +42,11 @@ public class Cottonly {
         CBlocks.BLOCKS.register(eventBus);
         eventBus.addListener(this::init);
         eventBus.addListener(CottonlyClient::doClientStuff);
-        if (!CottonConfig.REMOVE_GRASS_LOOT_TABLE.get()) {
-            CLoots.LOOT_MODIFIERS.register(eventBus);
-        }
+        CLoots.LOOT_MODIFIERS.register(eventBus);
+        eventBus.addListener(this::dataGen);
+/*
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CottonConfig.COMMON_CONFIG);
+*/
         /*ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CottonConfig.CLIENT_CONFIG);
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CottonConfig.SERVER_CONFIG);*/
     }
@@ -56,6 +58,10 @@ public class Cottonly {
 
     private static void registerCompostable(float chance, Item itemIn) {
         ComposterBlock.COMPOSTABLES.put(itemIn, chance);
+    }
+
+    public void dataGen(GatherDataEvent event) {
+        event.getGenerator().addProvider(true, new LootModifierGenerator(event.getGenerator()));
     }
 
 }
