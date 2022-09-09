@@ -1,16 +1,17 @@
 package net.manmaed.cottonly;
 
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.manmaed.cottonly.blocks.CBlocks;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraft.client.render.RenderLayer;
 
 /**
  * Created by manmaed on 16/05/2021.
  */
-public class CottonlyClient {
+public class CottonlyClient implements ClientModInitializer {
 
-    public static void doClientStuff(final FMLClientSetupEvent event) {
-        //ItemBlockRenderTypes.setRenderLayer(CBlocks.COTTON_PLANT.get(), RenderType.cutout());
+    @Override
+    public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), CBlocks.COTTON_PLANT);
     }
 }

@@ -1,61 +1,42 @@
 package net.manmaed.cottonly;
 
+import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.manmaed.cottonly.blocks.CBlocks;
-import net.manmaed.cottonly.config.CottonConfig;
 import net.manmaed.cottonly.items.CItems;
 import net.manmaed.cottonly.loot.CLoots;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraft.block.ComposterBlock;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.Identifier;
 
 /**
  * Created by manmaed on 16/05/2021.
  */
 
-@Mod(Cottonly.MOD_ID)
-public class Cottonly {
+public class Cottonly implements ModInitializer {
     public static final String MOD_ID = "cottonly";
+
     /*
      * TODOs:
-     *
+     * Armor Colors
+     * Seed Drops to 25% ish
      */
-
-    public static final CreativeModeTab itemGroup = new CreativeModeTab(MOD_ID) {
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(Items.WITHER_ROSE);
-        }
-    };
-
-    public Cottonly() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        CItems.ITEMS.register(eventBus);
-        CBlocks.BLOCKS.register(eventBus);
-        eventBus.addListener(this::init);
-        CLoots.LOOT_MODIFIERS.register(eventBus);
-/*
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CottonConfig.COMMON_CONFIG);
-*/
-        /*ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CottonConfig.CLIENT_CONFIG);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, CottonConfig.SERVER_CONFIG);*/
+    @Override
+    public void onInitialize() {
+        CItems.doItemRegistery();
+        CBlocks.doBlockRegistery();
+        CLoots.doLootEvent();
+        registerCompostable(0.65F, CItems.COTTON_SEED);
     }
 
-
-    private void init(FMLCommonSetupEvent event) {
-        registerCompostable(0.65F, CItems.COTTON_SEED.get());
-    }
+    public static final ItemGroup itemGroup = FabricItemGroupBuilder.build(new Identifier(MOD_ID),
+            () -> new ItemStack(Items.WITHER_ROSE));
 
     private static void registerCompostable(float chance, Item itemIn) {
-        ComposterBlock.COMPOSTABLES.put(itemIn, chance);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(itemIn.asItem(), chance);
     }
-
 }
+
