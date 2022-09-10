@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
 //16448250
-public interface CDyeableItem  extends DyeableItem {
+public interface CDyeableItem extends DyeableItem {
     String COLOR_KEY = "color";
     String DISPLAY_KEY = "display";
     int DEFAULT_COLOR = 16448250;
@@ -34,6 +34,5 @@ public interface CDyeableItem  extends DyeableItem {
     default void setColor(ItemStack stack, int color) {
         stack.getOrCreateSubNbt("display").putInt("color", color);
     }
-
 
 }

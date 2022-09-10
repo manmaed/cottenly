@@ -22,7 +22,6 @@ public class Cottonly implements ModInitializer {
     /*
      * TODOs:
      * Armor Colors
-     * Seed Drops to 25% ish
      */
     @Override
     public void onInitialize() {
