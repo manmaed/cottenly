@@ -15,7 +15,7 @@ repositories {
 sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 def ENV = System.getenv()
-version = "${ENV.GITHUB_RUN_NUMBER}" ? "${mod_version}.${ENV.GITHUB_RUN_NUMBER}" : "${mod_version}.nobuildnumber"
+version = "${mod_version}"
 group = 'net.manmaed.cottonly'
 archivesBaseName = 'cottonly'
 

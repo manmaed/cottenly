@@ -31,7 +31,7 @@ public class Cottonly implements ModInitializer {
         registerCompostable(0.65F, CItems.COTTON_SEED);
     }
 
-    public static final ItemGroup itemGroup = FabricItemGroupBuilder.build(new Identifier(MOD_ID),
+    public static final ItemGroup itemGroup = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "name"),
             () -> new ItemStack(Items.WITHER_ROSE));
 
     private static void registerCompostable(float chance, Item itemIn) {

@@ -1,7 +1,7 @@
 {
   "lang.file.name": "Chinese (CHS)",
   "lang.author.name": "Dev_Enter",
-  "itemGroup.cottonly": "棉花",
+  "itemGroup.cottonly.name": "棉花",
 
   "cottonly.coment.1": "Items",
   "item.cottonly.ball": "棉花球",

@@ -1,7 +1,8 @@
 {
   "lang.file.name": "Pirate Speak",
   "lang.author.name": "manmaed",
-  "itemGroup.cottonly": "Cottonly",
+  "itemGroup.cottonly.name": "Cottonly",
+
   "cottonly.coment.1": "Items",
   "item.cottonly.ball": "Ball o' Stuffin",
   "item.cottonly.cotton_seeds": "Seeds o' Stuffin",
@@ -9,6 +10,7 @@
   "item.cottonly.cotton_shirt": "Jacket 'o Raggs",
   "item.cottonly.cotton_trousers": "Breeches o' Raggs",
   "item.cottonly.cotton_socks": "Peg-leg o' Raggs",
+
   "cottonly.coment.2": "Blocks",
   "block.cottonly.cotton_plant": "Stuffin harvest"
 }
