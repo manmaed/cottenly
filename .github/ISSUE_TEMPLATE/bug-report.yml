@@ -32,6 +32,15 @@ body:
     validations:
       required: false
   - type: input
+    id: fabric-version
+    attributes:
+      label: Fabric Version
+      description: |
+        You can get this somewhere ¯\_(ツ)_/¯
+      placeholder: 0.14.9
+    validations:
+      required: false
+  - type: input
     id: modpack
     attributes:
       label: Modpack & Version
