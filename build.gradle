@@ -4,41 +4,55 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
+
 repositories {
     maven {
         url "https://www.cursemaven.com"
     }
 }
-
-// Github Stuff
 def ENV = System.getenv()
 version = "${ENV.GITHUB_RUN_NUMBER}" ? "${mod_version}.${ENV.GITHUB_RUN_NUMBER}" : "${mod_version}.nobuildnumber"
-group = 'net.manmaed.cottonly' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'net.manmaed.cottonly' 
 archivesBaseName = 'cottonly'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java 8 to end users, so your mod should target Java 8.
+// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'official', version: "${minecraft_version}"
-    runs {
+    mappings channel: "${minecraft_mappings}", version: "${minecraft_version}"
+runs {
         client {
-            workingDirectory project.file('run/c')
+            workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'cottonly'
             mods {
-                cottenly {
+                cottonly {
                     source sourceSets.main
                 }
             }
         }
 
         server {
-            workingDirectory project.file('run/s')
+            workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'cottonly'
             mods {
-                cottenly {
+                cottonly {
+                    source sourceSets.main
+                }
+            }
+        }
+
+       gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'cottonly'
+            mods {
+                cottonly {
                     source sourceSets.main
                 }
             }
@@ -50,7 +64,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'cottonly', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
-                cottenly {
+                cottonly {
                     source sourceSets.main
                 }
             }
@@ -59,51 +73,61 @@ minecraft {
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
-dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-//    compile fg.deobf("curse.maven:TOP-245211:3157997") //The One Probe
-//    compile fg.deobf("curse.maven:JEI-238222:3414898") //Just Enough Items
-//    compile fg.deobf("curse.maven:BS-228525:3411543") //Bookshelf
-//    compile fg.deobf("curse.maven:BP-353928:3283196") //Botany Pots
-//    compile fg.deobf("curse.maven:CL-272335:3349690") //Cucumber Library
-//    compile fg.deobf("curse.maven:MA-246640:3398788") //Mystical Agriculture
+
+repositories {
 }
 
-// Example for how to get properties into the manifest for reading by the runtime..
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
 jar {
     manifest {
         attributes([
-            "Specification-Title": "cottenly",
-            "Specification-Vendor": "manmaed",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"manmaed",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Specification-Title"     : "cottonly",
+                "Specification-Vendor"    : "manmaed",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "manmaed",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
 
-// Example configuration to allow publishing using the maven-publish task
-// This is the preferred method to reobfuscate your jar file
-jar.finalizedBy('reobfJar') 
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-//publish.dependsOn('reobfJar')
+jar.finalizedBy('reobfJar')
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
 
 if (ENV.CURSE_DEPLOY) {
     curseforge {
         apiKey = ENV.CURSE_DEPLOY
         project {
             id = project.curseforge_id
-            releaseType = "beta"
+            releaseType = "${curseforge_releasetype}"
             addGameVersion "Forge"
             addGameVersion "Java 17"
             addGameVersion "${minecraft_version}"
-            mainArtifact(jar)
+            mainArtifact(jar) {
+                displayName = "${mod_name} v${version} - ${minecraft_version}"          
+            }
             changelog = "changeme"
+
         }
     }
 }
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }

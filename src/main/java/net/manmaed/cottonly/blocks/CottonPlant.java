@@ -27,9 +27,4 @@ public class CottonPlant extends CropBlock {
     public PlantType getPlantType(BlockGetter world, BlockPos pos) {
         return PlantType.CROP;
     }
-
-    @Override
-    public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack> itemStack) {
-        itemStack.add(new ItemStack(CItems.COTTON_SEED.get()));
-    }
 }

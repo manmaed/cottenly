@@ -2,8 +2,8 @@
   "parent": "block/crop",
   "render_type": "cutout",
   "textures": {
-    "crop": "cottonly:blocks/cotton_stage_0",
-    "all": "cottonly:blocks/cotton_stage_0"
+    "crop": "cottonly:block/cotton_stage_0",
+    "all": "cottonly:block/cotton_stage_0"
   },
   "display": {
     "thirdperson": {
