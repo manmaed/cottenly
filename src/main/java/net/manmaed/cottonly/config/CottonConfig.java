@@ -1,12 +1,11 @@
 package net.manmaed.cottonly.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
 
 /**
  * Created by manmaed on 15/08/2021.
  */
 public class CottonConfig {
-    private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
+    /*private static final ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
     private static final ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
 
@@ -28,5 +27,5 @@ public class CottonConfig {
 
     private static void doLootTableMagic() {
         REMOVE_GRASS_LOOT_TABLE = COMMON_BUILDER.comment("Remove Cotton seeds from the grass & fern loot table? [DEFAULT:false]").define("remove_cotton_seeds_loot_table", false);
-    }
+    }*/
 }

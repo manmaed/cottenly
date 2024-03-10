@@ -14,8 +14,8 @@ import org.jetbrains.annotations.Nullable;
  * mostly copy paste from (it auto gened the constrcture) {@link net.minecraft.world.item.DyeableArmorItem}
  */
 public class CArmorItem extends DyeableArmorItem {
-    public CArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builderIn) {
-        super(materialIn, slot, builderIn);
+    public CArmorItem(ArmorMaterial materialIn, ArmorItem.Type type, Properties builderIn) {
+        super(materialIn, type, builderIn);
     }
 
     @Override

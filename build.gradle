@@ -1,130 +1,80 @@
 plugins {
+    id 'java-library'
     id 'eclipse'
+    id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id 'net.neoforged.gradle.userdev' version '7.0.57'
+    id "me.modmuss50.mod-publish-plugin" version "0.4.5"
 }
 
-repositories {
-    maven {
-        url "https://www.cursemaven.com"
-    }
-}
 def ENV = System.getenv()
 version = "${ENV.GITHUB_RUN_NUMBER}" ? "${mod_version}.${ENV.GITHUB_RUN_NUMBER}" : "${mod_version}.nobuildnumber"
-group = 'net.manmaed.cottonly' 
-archivesBaseName = 'cottonly'
-
-// Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-minecraft {
-    mappings channel: "${minecraft_mappings}", version: "${minecraft_version}"
-runs {
-        client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cottonly'
-            mods {
-                cottonly {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cottonly'
-            mods {
-                cottonly {
-                    source sourceSets.main
-                }
-            }
-        }
-
-       gameTestServer {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'cottonly'
-            mods {
-                cottonly {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'cottonly', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            mods {
-                cottonly {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
-}
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+group = project.maven_group
 
 repositories {
+    mavenLocal()
+    maven {
+        url "https://maven.curse.tools"
+    }
 }
+
+base {
+    archivesName = project.archives_base_name + "-neo"
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
+        modSource project.sourceSets.main
+    }
+
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', project.archives_base_name
+    }
+
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', project.archives_base_name
+        programArgument '--nogui'
+    }
+
+    data {
+        programArguments.addAll '--mod', project.archives_base_name, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+    }
+}
+
+sourceSets.main.resources {
+     srcDir 'src/generated/resources' 
+     }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation "net.neoforged:neoforge:${neo_version}"
 }
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            version: version
+    ]
+    inputs.properties replaceProperties
 
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "cottonly",
-                "Specification-Vendor"    : "manmaed",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "manmaed",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
     }
 }
 
-jar.finalizedBy('reobfJar')
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
-
-if (ENV.CURSE_DEPLOY) {
+publishMods {
+    dryRun = providers.environmentVariable("CURSE_DEPLOY").getOrNull() == null
+    file = jar.archiveFile
+    modLoaders.add("neoforge")
+    type = BETA
+    changelog = "changeme"
+    displayName = "${mod_name} v${project.version} - NeoForge - ${minecraft_version}"
     curseforge {
-        apiKey = ENV.CURSE_DEPLOY
-        project {
-            id = project.curseforge_id
-            releaseType = "${curseforge_releasetype}"
-            addGameVersion "Forge"
-            addGameVersion "Java 17"
-            addGameVersion "${minecraft_version}"
-            mainArtifact(jar) {
-                displayName = "${mod_name} v${version} - ${minecraft_version}"          
-            }
-            changelog = "changeme"
-
-        }
+        accessToken = providers.environmentVariable("CURSE_DEPLOY")
+        projectId = project.curseforge_id
+        minecraftVersions.add("Java 17")
+        minecraftVersions.add("${minecraft_version}")
     }
 }
 

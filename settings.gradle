@@ -1,7 +1,10 @@
 pluginManagement {
     repositories {
+        mavenLocal()
         gradlePluginPortal()
-        maven { url = 'https://forge.modpacks.ch/maven' }
-        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://maven.creeperhost.net/' }
     }
+}
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
 }

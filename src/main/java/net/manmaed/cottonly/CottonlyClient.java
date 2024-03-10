@@ -1,9 +1,7 @@
 package net.manmaed.cottonly;
 
-import net.manmaed.cottonly.blocks.CBlocks;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 /**
  * Created by manmaed on 16/05/2021.
