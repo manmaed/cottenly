@@ -1,9 +1,9 @@
-name: Build & Release For Minecraft 1.19.3 
+name: Build & Release For Minecraft 1.20.4 - Neo
 
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*-neo'
 
 jobs:
   build:
@@ -32,4 +32,4 @@ jobs:
           CURSE_DEPLOY: ${{ secrets.CURSE_DEPLOY }}
         run: |
           chmod +x ./gradlew
-          ./gradlew build curseforge --stacktrace --no-daemon
+          ./gradlew build publishMods --stacktrace --no-daemon
