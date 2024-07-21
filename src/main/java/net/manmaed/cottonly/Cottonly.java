@@ -29,8 +29,7 @@ public class Cottonly {
     public static final String MOD_ID = "cottonly";
     /*
      * TODO:
-     * Readd Loot Tables
-     * Readd
+     * Fix Default Color on cotton armor
      */
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> cottonlyTab = CREATIVE_MODE_TABS.register(MOD_ID, () -> CreativeModeTab.builder()
