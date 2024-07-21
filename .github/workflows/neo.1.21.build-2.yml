@@ -1,4 +1,4 @@
-name: Build & Release For Minecraft 1.21 - Neo
+name: Build & Release For Minecraft 1.21 - Neo - 2
 
 on:
   push:
