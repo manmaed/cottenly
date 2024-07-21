@@ -1,5 +1,9 @@
 package net.manmaed.cottonly.datagenerators;
 
+import net.manmaed.cottonly.datagenerators.lang.CottonENPT;
+import net.manmaed.cottonly.datagenerators.lang.CottonENUD;
+import net.manmaed.cottonly.datagenerators.lang.CottonENUS;
+import net.manmaed.cottonly.datagenerators.lang.CottonLOLUS;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 

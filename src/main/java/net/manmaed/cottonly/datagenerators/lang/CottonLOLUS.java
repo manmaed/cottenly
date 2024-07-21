@@ -1,4 +1,4 @@
-package net.manmaed.cottonly.datagenerators;
+package net.manmaed.cottonly.datagenerators.lang;
 
 import net.manmaed.cottonly.Cottonly;
 import net.minecraft.data.PackOutput;
