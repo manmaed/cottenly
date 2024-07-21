@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cottonly:cotton_ball"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:string"
+  }
+}

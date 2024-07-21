@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "c": {
+      "item": "cottonly:cotton_ball"
+    }
+  },
+  "pattern": [
+    "c c",
+    "ccc",
+    "ccc"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cottonly:cotton_shirt"
+  }
+}

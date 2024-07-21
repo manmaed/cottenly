@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cottonly:item/cotton_shirt",
+    "layer1": "cottonly:item/cotton_shirt_overlay"
+  }
+}

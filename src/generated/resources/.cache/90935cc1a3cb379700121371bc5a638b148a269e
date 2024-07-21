@@ -1,0 +1,6 @@
+// 1.21	2024-07-20T22:15:10.1825266	Global Loot Modifiers : cottonly
+b138a9bf3a8827363c346d0b190f2a808607213e data/cottonly/loot_modifiers/cotton_from_fern.json
+79dac5dbc46674df4d1883497314641dbaa58477 data/cottonly/loot_modifiers/cotton_from_large_fern.json
+1b5a0360dcbecbac30ca27165c06d704ff63dcdd data/cottonly/loot_modifiers/cotton_from_short_grass.json
+b453668561520808fee3fcf57579e183221c319b data/cottonly/loot_modifiers/cotton_from_tall_grass.json
+6672ac8e5155106856da9be5953e20cd26a71ce9 data/neoforge/loot_modifiers/global_loot_modifiers.json

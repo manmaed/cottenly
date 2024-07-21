@@ -1,0 +1,17 @@
+{
+  "type": "cottonly:cotton_from_short_grass",
+  "conditions": [
+    {
+      "chance": 0.1,
+      "condition": "minecraft:random_chance"
+    },
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/short_grass"
+    }
+  ],
+  "table": {
+    "count": 1,
+    "id": "cottonly:cotton_seeds"
+  }
+}
