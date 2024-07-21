@@ -22,6 +22,7 @@ public class CottonlyDataGeneration {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         generator.addProvider(true, new CottonRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(true,  new CottonItemModelProvider(packOutput, fileHelper));
+        generator.addProvider(true, new CottonBlockModelProvider(packOutput, fileHelper));
         var cottonBlockTagsProvider = generator.addProvider(true, new CottonBlockTagsProvider(packOutput, lookupProvider, fileHelper));
         generator.addProvider(true, new CottonItemTagsProvider(packOutput, lookupProvider,  cottonBlockTagsProvider.contentsGetter(), fileHelper));
         generator.addProvider(true, new CottonGlobalLootModifierProvider(packOutput,  lookupProvider));

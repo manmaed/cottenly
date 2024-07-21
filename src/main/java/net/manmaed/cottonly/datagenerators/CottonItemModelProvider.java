@@ -23,6 +23,7 @@ public class CottonItemModelProvider extends ItemModelProvider {
         makeArmor("cotton_socks");
         makeItem("cotton_seeds");
         makeItem("cotton_ball");
+        makeItem("cotton_plant", "cotton_seeds");
     }
 
     public void makeArmor(String name) {
@@ -32,7 +33,12 @@ public class CottonItemModelProvider extends ItemModelProvider {
     }
 
     public void makeItem(String item) {
-        getBuilder(item).parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", getLoc("item/" + item));
+        makeItem(item, item);
+        /*getBuilder(item).parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", getLoc("item/" + item));*/
+    }
+    public void makeItem(String filename, String texture) {
+        getBuilder(filename).parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", getLoc("item/" + texture));
     }
 }

@@ -27,10 +27,10 @@ public class CottonBlockStateProvider extends BlockStateProvider {
                 .forAllStates(state -> {
                     int age = state.getValue(CropBlock.AGE);
                     String model = switch (age) {
-                        case 0, 1 -> "block/cotton_plant_0";
-                        case 2, 3 -> "block/cotton_plant_1";
-                        case 4, 5 -> "block/cotton_plant_2";
-                        case 6 -> "block/cotton_plant_3";
+                        case 0 -> "block/cotton_plant_0";
+                        case 1, 2 -> "block/cotton_plant_1";
+                        case 3, 4 -> "block/cotton_plant_2";
+                        case 5, 6 -> "block/cotton_plant_3";
                         case 7 -> "block/cotton_plant_4";
                         default -> "block/cotton_plant_0";
                     };
