@@ -28,8 +28,9 @@ import java.util.List;
 public class Cottonly {
     public static final String MOD_ID = "cottonly";
     /*
-     * TODOs:
-     *
+     * TODO:
+     * Readd Loot Tables
+     * Readd
      */
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> cottonlyTab = CREATIVE_MODE_TABS.register(MOD_ID, () -> CreativeModeTab.builder()
@@ -46,13 +47,13 @@ public class Cottonly {
             .build());
 
 
-
     public Cottonly(IEventBus eventBus) {
         CItems.ITEMS.register(eventBus);
         CBlocks.BLOCKS.register(eventBus);
         eventBus.addListener(this::init);
         CLoots.LOOT_MODIFIERS.register(eventBus);
         CREATIVE_MODE_TABS.register(eventBus);
+        eventBus.addListener(CottonlyClient::doClientStuff);
 
     }
 
@@ -63,21 +64,5 @@ public class Cottonly {
     private static void registerCompostable(float chance, Item itemIn) {
         ComposterBlock.COMPOSTABLES.put(itemIn, chance);
     }
-
-    /*public void createTabs(CreativeModeTabEvent.Register event) {
-        event.registerCreativeModeTab(new ResourceLocation(MOD_ID, "creative_tab"), builder -> builder
-                .icon(() -> new ItemStack(Items.WITHER_ROSE))
-                .title(Component.translatable("itemGroup." + MOD_ID))
-                .displayItems((features, output, hasPrems) -> {
-                    for (Item item : ForgeRegistries.ITEMS.getValues()) {
-                        if (item.getCreatorModId(item.getDefaultInstance()).equals(MOD_ID)) {
-                            if (!item.toString().equals("cotton_plant")) {
-                                output.accept(item);
-                            }
-                        }
-                    }
-                })
-        );
-    }*/
 
 }

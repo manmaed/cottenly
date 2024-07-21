@@ -3,8 +3,8 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.57'
-    id "me.modmuss50.mod-publish-plugin" version "0.4.5"
+    id 'net.neoforged.gradle.userdev' version "${neo_gradle}"
+    id "me.modmuss50.mod-publish-plugin" version "${modmuss_publish}"
 }
 
 def ENV = System.getenv()
@@ -22,7 +22,7 @@ base {
     archivesName = project.archives_base_name + "-neo"
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 runs {
     configureEach {
@@ -58,7 +58,7 @@ tasks.withType(ProcessResources).configureEach {
     ]
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+    filesMatching(['META-INF/neoforge.mods.toml']) {
         expand replaceProperties + [project: project]
     }
 }
@@ -73,11 +73,18 @@ publishMods {
     curseforge {
         accessToken = providers.environmentVariable("CURSE_DEPLOY")
         projectId = project.curseforge_id
-        minecraftVersions.add("Java 17")
+        minecraftVersions.add("Java 21")
         minecraftVersions.add("${minecraft_version}")
     }
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
 }

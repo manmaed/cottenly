@@ -16,5 +16,4 @@ public class CottonPlant extends CropBlock {
     public ItemLike getBaseSeedId() {
         return CItems.COTTON_SEED.get();
     }
-
 }
