@@ -64,7 +64,7 @@ tasks.withType(ProcessResources).configureEach {
 }
 
 publishMods {
-    dryRun = providers.environmentVariable("CURSE_DEPLOY").getOrNull() == null
+    dryRun = true
     file = jar.archiveFile
     modLoaders.add("neoforge")
     type = BETA
