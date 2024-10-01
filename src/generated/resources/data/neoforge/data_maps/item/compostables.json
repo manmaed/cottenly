@@ -1,0 +1,11 @@
+{
+  "values": {
+    "cottonly:cotton_ball": {
+      "chance": 0.65
+    },
+    "cottonly:cotton_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    }
+  }
+}

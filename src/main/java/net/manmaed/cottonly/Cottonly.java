@@ -9,10 +9,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.ComposterBlock;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -49,19 +47,9 @@ public class Cottonly {
     public Cottonly(IEventBus eventBus) {
         CItems.ITEMS.register(eventBus);
         CBlocks.BLOCKS.register(eventBus);
-        eventBus.addListener(this::init);
         CLoots.LOOT_MODIFIERS.register(eventBus);
         CREATIVE_MODE_TABS.register(eventBus);
         eventBus.addListener(CottonlyClient::doClientStuff);
 
     }
-
-    private void init(FMLCommonSetupEvent event) {
-        registerCompostable(0.65F, CItems.COTTON_SEED.get());
-    }
-
-    private static void registerCompostable(float chance, Item itemIn) {
-        ComposterBlock.COMPOSTABLES.put(itemIn, chance);
-    }
-
 }

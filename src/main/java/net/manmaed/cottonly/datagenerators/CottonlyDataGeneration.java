@@ -29,5 +29,6 @@ public class CottonlyDataGeneration {
         generator.addProvider(true, new CottonLootTables(packOutput, lookupProvider));
         generator.addProvider(true, new CottonBlockStateProvider(packOutput, fileHelper));
         CottonLanguageProvider.addTranslations(generator);
+        generator.addProvider(true, new CottonDataMaps(packOutput, lookupProvider));
     }
 }
