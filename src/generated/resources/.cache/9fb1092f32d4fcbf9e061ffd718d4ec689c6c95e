@@ -1,11 +1,11 @@
-// 1.21	2024-07-20T22:30:36.4414645	Recipes
+// 1.21	2024-10-25T15:41:36.19544	Recipes
 6eea29fd5a542c5e6b5462a51c22291291dd40d4 data/cottonly/advancement/recipes/combat/cotton_hat.json
 340c97d32289db3a6642bc6c32ec82b526c51630 data/cottonly/advancement/recipes/combat/cotton_shirt.json
 ce0fbd8ceb823e049948463650e728464e1fa41f data/cottonly/advancement/recipes/combat/cotton_socks.json
 3ee8569f97eb06f484947500d242f4ff48719d27 data/cottonly/advancement/recipes/combat/cotton_trousers.json
+06dfef43835319c5a42dcaa9eae709ca0c065768 data/cottonly/advancement/recipes/misc/cotton_to_string.json
 72b569a93076d504fc73e4958a4b380f1d6ad5bc data/cottonly/recipe/cotton_hat.json
 d4dfb87a99708b8cba6f992418f1321171e048ed data/cottonly/recipe/cotton_shirt.json
 871f2f9f09d8b64f885ffd7a1ec41f57db281c13 data/cottonly/recipe/cotton_socks.json
+bc4076cb943129bfbfab6ad972ff0ef6cb01540f data/cottonly/recipe/cotton_to_string.json
 746fbd810b65a610417caaa429c6784c9b395144 data/cottonly/recipe/cotton_trousers.json
-fcb0f43fab66270c540e283f293110c0d83975c6 data/minecraft/advancement/recipes/misc/string.json
-bc4076cb943129bfbfab6ad972ff0ef6cb01540f data/minecraft/recipe/string.json

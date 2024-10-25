@@ -1,2 +1,2 @@
-# cottenly
-It Just adds cotten
+# cottonly
+It Just adds cotton

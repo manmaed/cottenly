@@ -7,10 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.ArmorDyeRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -49,6 +46,6 @@ public class CottonRecipeProvider extends RecipeProvider {
                 .pattern("c c").unlockedBy("has_cotton", has(CItems.COTTON_BALL)).save(output);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STRING,  4).requires(Ingredient
-                .of(CItems.COTTON_BALL)).unlockedBy("has_cotton",has(CItems.COTTON_BALL)).save(output);
+                .of(CItems.COTTON_BALL)).unlockedBy("has_cotton",has(CItems.COTTON_BALL)).save(output, getSave("cotton_to_string"));
     }
 }
